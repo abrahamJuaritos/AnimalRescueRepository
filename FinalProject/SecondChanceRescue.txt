@@ -1,0 +1,39 @@
+========== Animal Second Chance Rescue Summary ==========
+Rescue Name: Second Chance Rescue
+Maximum number of animals: 3
+Current number of animals: 3
+
+Name: Luna
+Species: Dog
+Weight: 20.0 lbs
+Weight Category: Medium
+Daily food amount: 1.50 cups
+Weekly food amount: 10.50 cups
+
+----------------------------------------
+
+Name: Pip
+Species: Bird
+Weight: 0.8 lbs
+Weight Category: Small
+Daily food amount: 0.10 cups
+Weekly food amount: 0.70 cups
+
+----------------------------------------
+
+Name: Rex
+Species: Dog
+Weight: 100.0 lbs
+Weight Category: Extra Large
+Daily food amount: 3.00 cups
+Weekly food amount: 21.00 cups
+
+========================================
+
+========== Second Chance Rescue Food Analysis ==========
+Total number of animals: 3
+Total weekly food required: 32.20 cups
+Average daily food amount: 1.53 cups
+Animals at or above the average daily food amount:
+Rex: 3.00 cups
+========================================

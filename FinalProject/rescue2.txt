@@ -1,0 +1,4 @@
+Luna Dog 20.0 1.50
+Pip Bird 0.8 0.10
+Rex Dog 100.0 3.00
+Bella Cat 8.0 0.60

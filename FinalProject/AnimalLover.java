@@ -7,15 +7,17 @@ public class AnimalLover {
 
 	
 	public static void main(String[] args) {
-		Animal firstAnimal = new Animal("Monkey", "Orangutang", 250.07, 50);
-		Animal secondAnimal = new Animal("Monkey", "chimp", 250.07, 77);
+		Animal firstAnimal = new Animal("Monkey", "Orangutang", 250.07, 2.5);
+		Animal secondAnimal = new Animal("Monkey", "chimp", 250.07, 2.5);
+		Animal thirdAnimal = new Animal("Monkey", "chimp", 250.07, 0);
 
 		
 		RescueCenter firstRescue = new RescueCenter("Hillsgrove", 5);
 		firstRescue.addAnimal(firstAnimal);
 		firstRescue.addAnimal(secondAnimal);
+		firstRescue.addAnimal(thirdAnimal);
 		
-		System.out.print(firstRescue.calculateAverageDailyFood());
+		firstRescue.displayAnimalResults();
 		
 		
 		
@@ -166,7 +168,11 @@ class RescueCenter{
 	}//end of method
 	
 	public void displayAnimalResults() {
-		
+		System.out.printf("----------------%S Rescue Food Analysis-------------------\n"
+				+ "Total number of animals: %d\n"
+				+ "Total weekly food required: %.02f cups\n"
+				+ "Average daily food amount: %.02f cups\n", rescueName, animalCount, calculateTotalWeeklyFood(), calculateAverageDailyFood());
+		displayAnimalsAtOrAboveDailyFood(calculateAverageDailyFood());
 	}//end of method
 	
 	public double calculateTotalWeeklyFood() {
@@ -195,6 +201,14 @@ class RescueCenter{
 	}//end of method
 	
 	public void displayAnimalsAtOrAboveDailyFood(double average) {
+		System.out.println("Animals at or above avg:");
+		for(int i = 0; i<animals.length; i++) {
+			if(animals[i] != null) {
+				if(animals[i].getDailyFoodAmount() >= average) {
+					System.out.printf("%S: %.02f cups\n", animals[i].getName(), animals[i].getDailyFoodAmount());
+				}
+			}
+		}
 		
 	
 	}//end of method

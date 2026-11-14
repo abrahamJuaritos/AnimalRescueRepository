@@ -124,11 +124,66 @@ class Animal{
 	public void displayAnimalAnalysis() {
 		System.out.printf("Name: %S\nSpecies: %S\nWeight: %.01f lbs\nWeight Category: %S\nDaily food amount: %.02f cups\nWeekly food amount: "
 							+ "%.02f cups\n", name, species, weight, determineWeightCategory(), dailyFoodAmount, calculateWeeklyFood());
+	}//end of method	
+}//end of Animal class
+
+class RescueCenter{
+	private String rescueName;
+	private Animal[] animals;
+	private int animalCount;
+	
+	public RescueCenter(String rescueName, int maxAnimals) {
+		this.rescueName = rescueName;
+		animals = new Animal[maxAnimals];
+	}//end of constructor method 
+	
+	public String getRescueName() {
+		return rescueName;
+	}///end of method
+	
+	public int getAnimalCount() {
+		return animalCount;
 	}//end of method
 	
-	public void writeAnimalAnalysis(PrintWriter outputFile) {
+	public void addAnimal(Animal animal) {
+		if (animalCount == animals.length)
+		{
+			System.out.println("\nRescue is full");
+		} else
+		{
+			animals[animalCount] = animal;
+			animalCount += 1;
+		}
 		
-	}//end of method 
+	}//end of method
 	
+	public void displayAnimalResults() {
+		
+	}//end of method
 	
-}//end of Animal class
+	public double calculateTotalWeeklyFood() {
+		double totalWeeklyFoodReturn = 0.0;
+		
+		for(int i = 0; i < animals.length; i ++) {
+			if(animals[i] != null) {
+				totalWeeklyFoodReturn += animals[i].calculateWeeklyFood();
+			}
+		}
+		
+		return totalWeeklyFoodReturn;
+		
+	}//end of method
+	
+	public double calculateAverageDailyFood() {
+		
+	}//end of method
+	
+	public void displayAnimalsAtOrAboveDailyFood(double average) {
+		
+	
+	}//end of method
+	
+	public void writeAnimalsToFile(String fileName)throws FileNotFoundException{
+		
+	}//end of method
+}//end of RescueCenter class

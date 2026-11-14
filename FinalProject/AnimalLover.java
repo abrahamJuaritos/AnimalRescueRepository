@@ -8,7 +8,15 @@ public class AnimalLover {
 	
 	public static void main(String[] args) {
 		Animal firstAnimal = new Animal("Monkey", "Orangutang", 250.07, 50);
-		firstAnimal.displayAnimalAnalysis();
+		Animal secondAnimal = new Animal("Monkey", "chimp", 250.07, 77);
+
+		
+		RescueCenter firstRescue = new RescueCenter("Hillsgrove", 5);
+		firstRescue.addAnimal(firstAnimal);
+		firstRescue.addAnimal(secondAnimal);
+		
+		System.out.print(firstRescue.calculateAverageDailyFood());
+		
 		
 		
 	}//end of main method
@@ -169,12 +177,20 @@ class RescueCenter{
 				totalWeeklyFoodReturn += animals[i].calculateWeeklyFood();
 			}
 		}
-		
 		return totalWeeklyFoodReturn;
 		
 	}//end of method
 	
 	public double calculateAverageDailyFood() {
+		
+		double avgDailyFood = 0.0;
+		for(int i = 0; i<animals.length; i++) {
+			if(animals[i] != null) {
+				avgDailyFood += animals[i].getDailyFoodAmount();
+			}
+		}
+		avgDailyFood = avgDailyFood / animalCount;
+		return avgDailyFood;
 		
 	}//end of method
 	

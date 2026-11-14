@@ -7,21 +7,32 @@ public class AnimalLover {
 
 	
 	public static void main(String[] args) {
-		Animal firstAnimal = new Animal("Monkey", "Orangutang", 250.07, 2.5);
-		Animal secondAnimal = new Animal("Monkey", "chimp", 250.07, 2.5);
-		Animal thirdAnimal = new Animal("Monkey", "chimp", 250.07, 0);
 
 		
-		RescueCenter firstRescue = new RescueCenter("Hillsgrove", 5);
-		firstRescue.addAnimal(firstAnimal);
-		firstRescue.addAnimal(secondAnimal);
-		firstRescue.addAnimal(thirdAnimal);
-		
-		firstRescue.displayAnimalResults();
-		
-		
-		
 	}//end of main method
+	
+	public static void rescueSetUp(String fileName, RescueCenter rescue)throws FileNotFoundException{
+		
+	}//end of method
+	
+	public static void runAnalysis(RescueCenter rescue)throws FileNotFoundException{
+		
+	}//end of method 
+	
+	/**
+	 * Summary of the program.
+	 * 
+	 * No return.
+	 */
+	public static void displaySummary() {
+		System.out.println("**********************************\n"
+				+ "Animal Rescue Center Analysis\n"
+				+ "**********************************\n"
+				+ "-This program reads animal information from a text file\n"
+				+ "-Displays each animal's weight category and weekly food\n"
+				+ "-Calculates average daily and total weekly food\n"
+				+ "Writes rescue information and analysis toa file\n");
+	}//end of method
 
 }// end of AnimalLover class
 
@@ -142,19 +153,39 @@ class RescueCenter{
 	private Animal[] animals;
 	private int animalCount;
 	
+	/**
+	 * Constructor for RescueCenter class which initializes the animalCount and the 
+	 * Animal data type array's size.
+	 * 
+	 * Initializes the rescue centers name.
+	 * @param String rescueName
+	 * @param int maxAnimals
+	 */
 	public RescueCenter(String rescueName, int maxAnimals) {
 		this.rescueName = rescueName;
 		animals = new Animal[maxAnimals];
 	}//end of constructor method 
 	
+	/**
+	 * Getter method for the Rescue center name instance variable.
+	 * @return String rescueName
+	 */
 	public String getRescueName() {
 		return rescueName;
 	}///end of method
 	
+	/**
+	 * Getter method for the animal counter instance variable.
+	 * @return int animalCount
+	 */
 	public int getAnimalCount() {
 		return animalCount;
 	}//end of method
 	
+	/**
+	 * add Animal inserts an Animal data type object into the Animal dataType array instance variable.
+	 * @param Animal animal
+	 */
 	public void addAnimal(Animal animal) {
 		if (animalCount == animals.length)
 		{
@@ -167,6 +198,10 @@ class RescueCenter{
 		
 	}//end of method
 	
+	/**
+	 * Print statement to showcase stats for the Animal Rescue as a whole.
+	 * Accesses instance variables and instance methods.
+	 */
 	public void displayAnimalResults() {
 		System.out.printf("----------------%S Rescue Food Analysis-------------------\n"
 				+ "Total number of animals: %d\n"
@@ -175,42 +210,58 @@ class RescueCenter{
 		displayAnimalsAtOrAboveDailyFood(calculateAverageDailyFood());
 	}//end of method
 	
+	/**
+	 * Getter method in a sense. Accesses every Animal objects weekly food
+	 * needs and sums them into a total value needed in cups for a week for the rescue as a whole.
+	 * @return double totalWeeklyFoodReturn
+	 */
 	public double calculateTotalWeeklyFood() {
 		double totalWeeklyFoodReturn = 0.0;
 		
 		for(int i = 0; i < animals.length; i ++) {
 			if(animals[i] != null) {
 				totalWeeklyFoodReturn += animals[i].calculateWeeklyFood();
-			}
-		}
+			}//end of if conditional code block 
+		}//end of for loop
 		return totalWeeklyFoodReturn;
 		
 	}//end of method
 	
+	/**
+	 * calculateAverageDailyFood iterates through all the entire rescue and for every animal adds up the daily 
+	 * food cups and divides that sum by the number of animals.
+	 * 
+	 * @return double avgDailyFood
+	 */
 	public double calculateAverageDailyFood() {
 		
 		double avgDailyFood = 0.0;
 		for(int i = 0; i<animals.length; i++) {
 			if(animals[i] != null) {
 				avgDailyFood += animals[i].getDailyFoodAmount();
-			}
-		}
+			}//end of if condition 
+		}//end of for loop
 		avgDailyFood = avgDailyFood / animalCount;
 		return avgDailyFood;
 		
 	}//end of method
 	
+	/**
+	 * Method brings in the average between all animals daily cup intake.
+	 * And accesses the animal display details within the animal class for the animals whose 
+	 * daily intake equal to or greater than the average calculated from the calculateAverageDailyFood method.
+	 * 
+	 * @param double average
+	 */
 	public void displayAnimalsAtOrAboveDailyFood(double average) {
 		System.out.println("Animals at or above avg:");
 		for(int i = 0; i<animals.length; i++) {
 			if(animals[i] != null) {
 				if(animals[i].getDailyFoodAmount() >= average) {
 					System.out.printf("%S: %.02f cups\n", animals[i].getName(), animals[i].getDailyFoodAmount());
-				}
-			}
-		}
-		
-	
+				}//end of if condition code block
+			}//end of if condition code block
+		}//end of for loop
 	}//end of method
 	
 	public void writeAnimalsToFile(String fileName)throws FileNotFoundException{
